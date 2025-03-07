@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherFloat - Previsão do Tempo</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/18005/18005339.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body>
+    <canvas id="weatherCanvas"></canvas>
+    <div class="container">
+        <h1>WeatherFloat</h1>
+        <div id="autoLoader" class="loader">
+            <div class="spinner-3d"></div> Carregando cidade atual...
+        </div>
+        <div class="search-container">
+            <i class="wi wi-search search-icon"></i>
+            <input type="text" id="cityInput" placeholder="Digite outra cidade" autocomplete="off" />
+            <div id="suggestions" class="suggestions"></div>
+        </div>
+        <div class="unit-toggle">
+            <label><input type="radio" name="unit" value="metric" checked onclick="toggleUnit('metric')"> °C</label>
+            <label><input type="radio" name="unit" value="imperial" onclick="toggleUnit('imperial')"> °F</label>
+        </div>
+        <div id="weatherResult" class="weather-info">
+            <h2 id="cityName"></h2>
+            <p id="currentDate"></p>
+            <p id="temperature" class="weather-icon"></p>
+            <p id="description" class="weather-icon"></p>
+            <p id="humidity"></p>
+            <p id="wind"></p>
+            <p id="cloudiness"></p>
+        </div>
+        <div id="forecastResult" class="forecast-info">
+            <h3>Previsão para os próximos dias</h3>
+            <div id="forecastDays" class="forecast-grid"></div>
+        </div>
+        <div id="errorAlert" class="error-alert"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="forecastModal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <h2 id="modalDay"></h2>
+            <div class="modal-section summary">
+                <h3>Resumo do Dia</h3>
+                <p id="modalDate"></p>
+                <p id="modalTemperature" class="weather-icon"></p>
+                <p id="modalCondition" class="weather-icon"></p>
+                <p id="modalFeelsLike" class="weather-detail"></p>
+                <p id="modalUVIndex" class="weather-detail"></p>
+            </div>
+            <div class="modal-section details">
+                <h3>Detalhes</h3>
+                <p id="modalHumidity" class="weather-detail"></p>
+                <p id="modalWind" class="weather-detail"></p>
+                <p id="modalPressure" class="weather-detail"></p>
+                <p id="modalPop" class="weather-detail">Chance de chuva: <span id="modalPopValue"></span>%</p>
+                <p id="modalMaxMin" class="weather-detail"></p>
+            </div>
+            <div class="modal-section hourly">
+                <h3>Previsão por Hora</h3>
+                <table id="hourlyForecast" class="hourly-table"></table>
+            </div>
+        </div>
+    </div>
+
+    <footer>Desenvolvido por <a href="https://github.com/opswesley" target="_blank">opswesley</a></footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
